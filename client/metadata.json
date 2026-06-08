@@ -1,0 +1,8 @@
+{
+  "name": "MedChain",
+  "description": "Healthcare Supply Integrity Platform. Rural Clinic Verification Dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
