@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 
 const GOLD_TEXT = "bg-clip-text text-transparent bg-gradient-to-r from-[#F0E5D1] to-[#C7A970]";
-const PANEL_BG = "bg-[#0A0A0A]/80 backdrop-blur-md border border-white/5";
+const PANEL_BG = "bg-[#0A0A0A]/90 backdrop-blur-xl border border-white/10";
 
 // ── Smooth scroll helper ──────────────────────────────────────────────────────
 function scrollTo(id: string) {
@@ -377,12 +377,18 @@ function UploadZone({ isScanning, file, onFileChange }: UploadZoneProps) {
 function AIMessage({ status, reason }: { status: string; reason: string }) {
   if (status === 'idle' || status === 'scanning') {
     return (
-      <div className={`${PANEL_BG} rounded-2xl p-6 flex flex-col justify-center min-h-[160px] opacity-60`}>
-        <div className="flex items-center justify-center gap-3 mb-2">
-          <ScanLine className="w-5 h-5 text-gray-600" />
-          <h4 className="text-md font-medium text-gray-500">AI Vision Status</h4>
+      <div className={`${PANEL_BG} rounded-2xl p-6 flex flex-col justify-center min-h-[160px] relative overflow-hidden`}>
+        {/* Gold top stripe */}
+        <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-[#C7A970]/60 via-[#F0E5D1]/40 to-[#C7A970]/60 rounded-t-2xl" />
+        {/* Subtle gold ambient glow */}
+        <div className="absolute top-0 inset-x-0 h-20 bg-gradient-to-b from-[#C7A970]/8 to-transparent pointer-events-none" />
+        <div className="flex items-center justify-center gap-3 mb-3 relative z-10">
+          <div className="w-9 h-9 rounded-lg bg-[#C7A970]/10 border border-[#C7A970]/20 flex items-center justify-center">
+            <ScanLine className="w-5 h-5 text-[#C7A970]" />
+          </div>
+          <h4 className="text-base font-semibold text-gray-200">AI Vision Status</h4>
         </div>
-        <span className="text-gray-600 font-mono text-sm text-center">Awaiting box scan or batch input...</span>
+        <span className="text-gray-400 font-mono text-sm text-center relative z-10">Awaiting box scan or batch input...</span>
       </div>
     );
   }
@@ -414,12 +420,18 @@ function AIMessage({ status, reason }: { status: string; reason: string }) {
 function BlockchainMessage({ status, flaggedOnChain }: { status: string; flaggedOnChain: boolean }) {
   if (status === 'idle' || status === 'scanning') {
     return (
-      <div className={`${PANEL_BG} rounded-2xl p-6 flex flex-col justify-center min-h-[160px] opacity-60`}>
-        <div className="flex items-center justify-center gap-3 mb-2">
-          <Database className="w-5 h-5 text-gray-600" />
-          <h4 className="text-md font-medium text-gray-500">Blockchain Ledger</h4>
+      <div className={`${PANEL_BG} rounded-2xl p-6 flex flex-col justify-center min-h-[160px] relative overflow-hidden`}>
+        {/* Gold top stripe */}
+        <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-[#C7A970]/60 via-[#F0E5D1]/40 to-[#C7A970]/60 rounded-t-2xl" />
+        {/* Subtle gold ambient glow */}
+        <div className="absolute top-0 inset-x-0 h-20 bg-gradient-to-b from-[#C7A970]/8 to-transparent pointer-events-none" />
+        <div className="flex items-center justify-center gap-3 mb-3 relative z-10">
+          <div className="w-9 h-9 rounded-lg bg-[#C7A970]/10 border border-[#C7A970]/20 flex items-center justify-center">
+            <Database className="w-5 h-5 text-[#C7A970]" />
+          </div>
+          <h4 className="text-base font-semibold text-gray-200">Blockchain Ledger</h4>
         </div>
-        <span className="text-gray-600 font-mono text-sm text-center">Awaiting queries to Sepolia Network...</span>
+        <span className="text-gray-400 font-mono text-sm text-center relative z-10">Awaiting queries to Sepolia Network...</span>
       </div>
     );
   }
